@@ -44,5 +44,5 @@ speedy = 1
 speedx = 1
 WIDTH = 1400
 HEIGHT = 700
-rect = pygame.Rect(100, 100, 200, 300)
+rect = pygame.Rect(100, 100, 1280/3, 720/3)
 rict_money()
