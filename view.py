@@ -1,3 +1,5 @@
+import random
+
 import pygame
 import model
 
@@ -12,21 +14,28 @@ kyr = pygame.image.load("kartinki/kyrs.png")
 kyrs = pygame.transform.scale(kyr, [model.WIDTH, model.HEIGHT])
 
 old_height = model.HEIGHT
+kyrs_step=2
+kyrs_b=[]
+for f in range(model.WIDTH//kyrs_step):
+    kyrs_b.append(random.randint(-20,20))
 
-kyrs_b=[350,400,100,600,500,550,200]
+
+def line ():
+    x_line=0
+    y_line=300
+    for i in kyrs_b:
+        pygame.draw.line(display, [0, 255, 0], [x_line, y_line], [x_line+kyrs_step, y_line+i], 3)
+        x_line=x_line+kyrs_step
+        y_line=i+y_line
 
 def weiv():
     global old_height, baller,kyrs
     if old_height != model.HEIGHT:
         baller = pygame.transform.scale(balle, [250, model.HEIGHT])
-        kyrs = pygame.transform.scale(kyr, [model.WIDTH, model.HEIGHT])
         old_height = model.HEIGHT
 
-    # display.fill([0, 0, 0])
-    # pygame.draw.rect(display, [55, 98, 205], [model.WIDTH - 300, 0, 250, model.HEIGHT])
-    # pygame.draw.rect(display, [90, 179, 202], model.rect_money)
-    # pygame.draw.rect(display, [78, 190, 59], model.rect)
-    display.blit(kyrs, [0, 0])
+    display.fill([0, 0, 0])
+    line()
     display.blit(baller, [model.WIDTH - 300, 0])
     display.blit(bitcoin, model.rect_money)
     display.blit(elon_mask, model.rect)
