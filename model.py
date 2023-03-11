@@ -6,6 +6,11 @@ import pygame
 def rict_money():
     global rect_money
     rect_money = pygame.Rect(random.randint(WIDTH - 300, WIDTH - 100), random.randint(0, HEIGHT - 50), 50, 50)
+def delete_kyrs():
+    del kyrs_b[0]
+    randomiys = random.randint(-20, 20)
+    element = kyrs_b[len(kyrs_b) - 1]
+    kyrs_b.append(element + randomiys)
 
 
 def update():
@@ -44,5 +49,13 @@ speedy = 1
 speedx = 1
 WIDTH = 1400
 HEIGHT = 700
-rect = pygame.Rect(100, 100, 1280/3, 720/3)
+rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
+
+kyrs_step = 2
+kyrs_b = [300]
+for f in range(WIDTH // kyrs_step):
+    randomiys=random.randint(-20, 20)
+    element=kyrs_b[len(kyrs_b)-1]
+    kyrs_b.append(element+randomiys)
+
 rict_money()

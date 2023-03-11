@@ -14,19 +14,16 @@ kyr = pygame.image.load("kartinki/kyrs.png")
 kyrs = pygame.transform.scale(kyr, [model.WIDTH, model.HEIGHT])
 
 old_height = model.HEIGHT
-kyrs_step=2
-kyrs_b=[]
-for f in range(model.WIDTH//kyrs_step):
-    kyrs_b.append(random.randint(-20,20))
+
 
 
 def line ():
     x_line=0
     y_line=300
-    for i in kyrs_b:
-        pygame.draw.line(display, [0, 255, 0], [x_line, y_line], [x_line+kyrs_step, y_line+i], 3)
-        x_line=x_line+kyrs_step
-        y_line=i+y_line
+    for i in model.kyrs_b:
+        pygame.draw.line(display, [0, 255, 0], [x_line, y_line], [x_line+model.kyrs_step, i], 3)
+        x_line=x_line+model.kyrs_step
+        y_line=i
 
 def weiv():
     global old_height, baller,kyrs
