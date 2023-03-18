@@ -16,5 +16,5 @@ def events():
         if s.type == nomertimer:
             model.rict_money()
         if s.type == nomertimer_2:
-            model.delete_kyrs()
+            model.sdvig_kyrs()
 
