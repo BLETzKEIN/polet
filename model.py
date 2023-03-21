@@ -3,26 +3,32 @@ import random
 import pygame
 
 
-def sdvig_kyrs():
-    del kyrs_b[0]
+def append_kyrs():
     randomiys = random.randint(-20, 20)
     element = kyrs_b[len(kyrs_b) - 1]
-    kyrs_b.append(element + randomiys)
+    new_element = element + randomiys
+    if new_element <= 0:
+        new_element += 100
+    if new_element >= HEIGHT:
+        new_element -= 100
+    kyrs_b.append(new_element)
+
+
+def sdvig_kyrs():
+    del kyrs_b[0]
+    append_kyrs()
 
 
 def recreate_kyrs():
     kyrs_b.clear()
     kyrs_b.append(HEIGHT // 2)
     for f in range(WIDTH // kyrs_step):
-        randomiys = random.randint(-20, 20)
-        element = kyrs_b[len(kyrs_b) - 1]
-        kyrs_b.append(element + randomiys)
-    print(len(kyrs_b))
+        append_kyrs()
 
 
 def rict_money():
     global rect_money
-    rect_money = pygame.Rect(random.randint(WIDTH - 500, WIDTH - 300), random.randint(0, HEIGHT - 50), 50, 50)
+    rect_money = pygame.Rect(random.randint(WIDTH,rect_baller.left), random.randint(0, HEIGHT - 50), 50, 50)
 
 
 def update():
@@ -65,7 +71,7 @@ WIDTH = 1400
 HEIGHT = 700
 
 rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
-rect_baller = pygame.Rect(WIDTH-300,0,300,HEIGHT)
+rect_baller = pygame.Rect(WIDTH - 400, 0, 400, HEIGHT)
 
 kyrs_step = 2
 kyrs_b = []

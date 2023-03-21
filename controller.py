@@ -4,7 +4,7 @@ import model
 nomertimer=pygame.event.custom_type()
 pygame.time.set_timer(nomertimer,1500)
 nomertimer_2=pygame.event.custom_type()
-pygame.time.set_timer(nomertimer_2,100)
+pygame.time.set_timer(nomertimer_2,50)
 def events():
     b = pygame.event.get()
     for s in b:
