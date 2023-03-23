@@ -28,7 +28,14 @@ def recreate_kyrs():
 
 def rict_money():
     global rect_money
-    rect_money = pygame.Rect(random.randint(WIDTH,rect_baller.left), random.randint(0, HEIGHT - 50), 50, 50)
+    x = random.randint(rect_baller.left, rect_baller.right - 50)
+    y = random.randint(rect_baller.top, rect_baller.bottom - 50)
+    rect_money = pygame.Rect(x, y, 50, 50)
+
+
+def create_baller():
+    global rect_baller
+    rect_baller = pygame.Rect(WIDTH - 400, 0, 400, HEIGHT)
 
 
 def update():
@@ -55,14 +62,13 @@ def display_full():
         WIDTH = 1400
         HEIGHT = 700
         pygame.display.set_mode([WIDTH, HEIGHT])
-        recreate_kyrs()
-        rict_money()
     else:
         pygame.display.set_mode([0, 0], pygame.FULLSCREEN)
         WIDTH = display.get_width()
         HEIGHT = display.get_height()
-        recreate_kyrs()
-        rict_money()
+    recreate_kyrs()
+    create_baller()
+    rict_money()
 
 
 speedy = 1
@@ -71,9 +77,11 @@ WIDTH = 1400
 HEIGHT = 700
 
 rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
-rect_baller = pygame.Rect(WIDTH - 400, 0, 400, HEIGHT)
+rect_baller = None
 
 kyrs_step = 2
 kyrs_b = []
+
 recreate_kyrs()
+create_baller()
 rict_money()

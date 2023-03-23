@@ -30,12 +30,13 @@ def line():
 def weiv():
     global old_height, baller, kyrs
     if old_height != model.HEIGHT:
-        baller = pygame.transform.scale(balle, [250, model.HEIGHT])
+        baller = pygame.transform.scale(balle, model.rect_baller.size)
         old_height = model.HEIGHT
 
     display.fill([0, 0, 0])
     line()
     display.blit(baller, model.rect_baller)
+    # pygame.draw.rect(display,[255,255,255],model.rect_baller)
     display.blit(bitcoin, model.rect_money)
     display.blit(elon_mask, model.rect)
     pygame.display.flip()
