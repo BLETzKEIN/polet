@@ -13,7 +13,9 @@ elon_mask = pygame.transform.scale(elon_mas, model.rect.size)
 
 balle = pygame.image.load("kartinki/img.png")
 baller = pygame.transform.scale(balle, model.rect_baller.size)
+pygame.init()
 
+f = pygame.font.SysFont("arial", 30, True, False)
 
 old_height = model.HEIGHT
 
@@ -39,4 +41,6 @@ def weiv():
     # pygame.draw.rect(display,[255,255,255],model.rect_baller)
     display.blit(bitcoin, model.rect_money)
     display.blit(elon_mask, model.rect)
+    q = f.render(str(model.bitcoins) + " money", True, [46, 83, 251])
+    display.blit(q, [0, 0])
     pygame.display.flip()

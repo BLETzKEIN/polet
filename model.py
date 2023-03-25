@@ -75,6 +75,7 @@ speedy = 1
 speedx = 1
 WIDTH = 1400
 HEIGHT = 700
+bitcoins = 0
 
 rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
 rect_baller = None
