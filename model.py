@@ -37,6 +37,15 @@ def create_baller():
     global rect_baller
     rect_baller = pygame.Rect(WIDTH - 400, 0, 400, HEIGHT)
 
+def sobirai_money (xy):
+    global bitcoins
+    if rect_money.collidepoint(xy):
+        bitcoins+=1
+        # print("ХАРОШ")
+        rict_money()
+        return True
+    return False
+
 
 def update():
     global speedy, rect_money, display
