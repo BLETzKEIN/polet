@@ -41,6 +41,12 @@ def weiv():
     # pygame.draw.rect(display,[255,255,255],model.rect_baller)
     display.blit(bitcoin, model.rect_money)
     display.blit(elon_mask, model.rect)
+
+
+    moneyts = f.render("monet_vsego "+ str(model.monet_vsego),True,[46,83,251])
+    display.blit(moneyts,[0,25])
+
     q = f.render(str(model.bitcoins) + " money", True, [46, 83, 251])
     display.blit(q, [0, 0])
+
     pygame.display.flip()
