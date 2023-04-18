@@ -34,12 +34,22 @@ def rict_money():
     monet_vsego += 1
     if monet_vsego % 10 == 0:
         speedx += 1
-        speedy +=speedy
+        if 0<speedy:
+            speedy += 1
+        if 0>speedy :
+            speedy += -1
 
 
 def create_baller():
     global rect_baller
     rect_baller = pygame.Rect(WIDTH - 400, 0, 400, HEIGHT)
+
+def smena_sceni():
+    global scena
+    if scena == "menu":
+        scena = "game"
+    else:
+        scena = "menu"
 
 def sobirai_money (xy):
     global bitcoins
@@ -60,6 +70,12 @@ def this_is_Elon_Mask ():
 def update():
     global speedy, rect_money, display
     display = pygame.display.get_surface()
+
+
+    rect.centerx += speedx
+    rect.centery += speedy
+    this_is_Elon_Mask()
+
     if rect.left >= WIDTH:
         rect.right = 0
 
@@ -71,9 +87,6 @@ def update():
         rect.top = 0
         speedy = -speedy
 
-    rect.centerx += speedx
-    rect.centery += speedy
-    this_is_Elon_Mask()
 
 
 def display_full():
@@ -97,9 +110,11 @@ WIDTH = 1400
 HEIGHT = 700
 bitcoins = 0
 monet_vsego = 0
+scena = "menu"
 
 rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
 rect_baller = None
+
 
 kyrs_step = 2
 kyrs_b = []
