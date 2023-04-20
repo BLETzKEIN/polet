@@ -14,6 +14,9 @@ def events():
         if s.type == pygame.QUIT:
             exit(666)
         if s.type == pygame.KEYDOWN:
+            if s.key == pygame.K_ESCAPE:
+                print(s)
+                model.smena_sceni()
             if s.key == pygame.K_F11:
                 model.display_full()
         if s.type == pygame.MOUSEBUTTONDOWN:

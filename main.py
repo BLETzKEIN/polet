@@ -10,6 +10,7 @@ while True:
     time.sleep(1 / 100)
     if model.scena == "menu":
         controller2.events()
+        view2.weiv()
     else:
         print(model.speedx)
         controller.events()
