@@ -18,4 +18,6 @@ def weiv():
 
     q = f.render("нажмите ESC чтобы начать",True,[46,83,251],[0,0,0])
     display.blit(q,[0,0])
+    record = f.render( "максимальный результат "+ str(model.speed_record),True,[46,83,251],[0,0,0])
+    display.blit(record,[0,34])
     pygame.display.flip()

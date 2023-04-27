@@ -1,5 +1,5 @@
 import random
-
+import os
 import pygame
 
 
@@ -27,13 +27,14 @@ def recreate_kyrs():
 
 
 def rict_money():
-    global rect_money, monet_vsego, speedx, speedy
+    global rect_money, monet_vsego, speedx, speedy,speed_in_game
     x = random.randint(rect_baller.left, rect_baller.right - 50)
     y = random.randint(rect_baller.top, rect_baller.bottom - 50)
     rect_money = pygame.Rect(x, y, 50, 50)
     monet_vsego += 1
     if monet_vsego % 10 == 0:
         speedx += 1
+        speed_in_game += 1
         if 0 < speedy:
             speedy += 1
         if 0 > speedy:
@@ -70,16 +71,34 @@ def this_is_Elon_Mask():
         proigrish()
         rict_money()
 
+def sohranenie ():
+    a = open("text.txt","w")
+    print(speed_record,file=a)
+    a.close()
+
+def zagryzka ():
+    global speed_record
+    if os.path.exists("text.txt"):
+        a = open("text.txt","r")
+        speed_record = a.read()
+        speed_record = int(speed_record)
+        a.close()
+
 
 def proigrish():
-    global bitcoins, monet_vsego,scena,rect,speedx,speedy
+    global bitcoins, monet_vsego,scena,rect,speedx,speedy,speed_in_game,speed_record
     if bitcoins < 0:
+        if speed_in_game > speed_record:
+            speed_record = speed_in_game
+            sohranenie()
+        speed_in_game = 1
         bitcoins = 0
         monet_vsego = 0
         rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
         speedx = 1
         speedy = 1
         scena = "menu"
+
 
 
 def update():
@@ -122,6 +141,9 @@ WIDTH = 1400
 HEIGHT = 700
 bitcoins = 0
 monet_vsego = 0
+speed_record = 0
+zagryzka()
+speed_in_game = 1
 scena = "menu"
 
 rect = pygame.Rect(100, 100, 1280 / 3, 720 / 3)
